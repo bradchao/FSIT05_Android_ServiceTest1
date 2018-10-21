@@ -48,7 +48,11 @@ public class MyService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         boolean isStart = intent.getBooleanExtra("start", false);
-        if (isStart){
+        int seekto = intent.getIntExtra("seekto", -1);
+
+        if (seekto != -1 && mediaPlayer !=null){
+            mediaPlayer.seekTo(seekto);
+        }else if (isStart){
             if (!mediaPlayer.isPlaying()) {
                 Log.v("brad", "pause => start");
                 mediaPlayer.start();
