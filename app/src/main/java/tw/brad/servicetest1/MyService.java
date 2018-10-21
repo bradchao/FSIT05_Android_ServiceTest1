@@ -67,6 +67,10 @@ public class MyService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        Intent intent = new Intent("brad");
+        intent.putExtra("now", 0);
+        sendBroadcast(intent);
+
         Log.v("brad", "die");
         if (mediaPlayer != null){
             mediaPlayer.stop();
